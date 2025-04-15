@@ -1,0 +1,36 @@
+{
+    "name": "artbambou/module-smile-custom-entity-widget",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0"
+    ],
+    "description": "A Magento 2 module that adds widget capabilities to Smile Custom Entities, allowing merchants to display filtered custom entity collections with advanced presentation options.",
+    "authors": [
+        {
+            "name": "Ilan Parmentier",
+            "email": "dev@amadeco.fr"
+        }
+    ],
+    "keywords": [
+        "magento",
+        "magento2",
+        "catalog",
+        "widget",
+        "smile custom entity",
+        "elasticsuite"
+    ],
+    "require": {
+        "smile/module-custom-entity": "*"
+	},
+    "suggest": {
+        "web200/magento-mod-web200_image-resize": "Resize image Magento 2 module: add simple image resizing capabilities in all blocks and .phtml templates"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Artbambou\\SmileCustomEntityWidget\\": ""
+        }
+    }
+}

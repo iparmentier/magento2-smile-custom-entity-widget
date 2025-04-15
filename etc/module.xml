@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Artbambou SmileCustomEntityWidget Module
+ *
+ * @category   Artbambou
+ * @package    Artbambou_SmileCustomEntityWidget
+ * @author     Ilan Parmentier
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	<module name="Artbambou_SmileCustomEntityWidget">
+	    <sequence>
+		    <module name="Smile_CustomEntity" />
+        </sequence>
+	</module>
+</config>

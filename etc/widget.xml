@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Artbambou SmileCustomEntityWidget Module
+ *
+ * @category   Artbambou
+ * @package    Artbambou_SmileCustomEntityWidget
+ * @author     Ilan Parmentier
+ */
+ -->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+   <widget id="artbambou_smile_custom_entity_set_widget"
+           class="Artbambou\SmileCustomEntityWidget\Block\Set\Widget\CustomEntityWidget">
+       <label>Smile Custom Entity Widget</label>
+       <description>Display custom entities with advanced filtering and sorting options</description>
+       <parameters>
+			<parameter name="heading_title" xsi:type="text" required="false" visible="true">
+				<label translate="true">Heading Title</label>
+			</parameter>
+            <parameter name="attribute_set_id" xsi:type="block" visible="true" required="true">
+                <label translate="true">Attribute Set</label>
+                <block class="Artbambou\SmileCustomEntityWidget\Block\Adminhtml\Set\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Attribute Set...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="conditions" xsi:type="conditions" visible="true" required="true"
+                class="Artbambou\SmileCustomEntityWidget\Block\Set\Widget\Conditions">
+                <label translate="true">Conditions</label>
+            </parameter>
+			<parameter name="show_pager" xsi:type="select" visible="true">
+                <label translate="true">Display Page Control</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+			</parameter>
+            <parameter name="items_per_page" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Items per Page</label>
+                <depends>
+                    <parameter name="show_pager" value="1" />
+                </depends>
+                <value>4</value>
+            </parameter>
+            <parameter name="items_count" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Items to display</label>
+                <value>8</value>
+            </parameter>
+            <parameter name="sort_by" xsi:type="select" required="false" visible="true"
+                source_model="Artbambou\SmileCustomEntityWidget\Model\Config\Source\SortBy">
+                <label translate="true">Attribute to sort the entities by</label>
+            </parameter>
+            <parameter name="sort_direction" xsi:type="select" required="false" visible="true"
+                source_model="Artbambou\SmileCustomEntityWidget\Model\Config\Source\Direction">
+                <label translate="true">Sort direction</label>
+            </parameter>
+			<parameter name="image_width" xsi:type="text" required="false" visible="true">
+				<label translate="true">Image Width</label>
+				<description translate="true">Enter Image width Ex. 400, do not suffix with px</description>
+	            <value>400</value>
+			</parameter>
+			<parameter name="image_height" xsi:type="text" required="false" visible="true">
+				<label translate="true">Image Height</label>
+				<description translate="true">Enter Image Height Ex. 400, do not suffix with px</description>
+	            <value>400</value>
+			</parameter>
+			<parameter name="show_footer_button" xsi:type="select" visible="true">
+				<label translate="true">Show Footer Button</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+			</parameter>
+			<parameter name="text_footer_button" xsi:type="text" required="false" visible="true">
+				<label translate="true">Text Footer Button</label>
+				<depends>
+					<parameter name="show_footer_button" value="1" />
+				</depends>
+			</parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <depends>
+                    <parameter name="show_pager" value="0" />
+                </depends>
+                <options>
+                    <option name="grid" value="Artbambou_SmileCustomEntityWidget::widget/grid.phtml" selected="true">
+                        <label translate="true">Grid Template</label>
+                    </option>
+                </options>
+            </parameter>
+       </parameters>
+   </widget>
+</widgets>

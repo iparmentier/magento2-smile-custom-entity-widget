@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Artbambou SmileCustomEntityWidget Module
+ *
+ * @category   Artbambou
+ * @package    Artbambou_SmileCustomEntityWidget
+ * @author     Ilan Parmentier
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="custom_entity_widget" frontName="custom_entity_widget">
+            <module name="Artbambou_SmileCustomEntityWidget" before="Magento_Adminhtml"/>
+        </route>
+    </router>
+</config>
