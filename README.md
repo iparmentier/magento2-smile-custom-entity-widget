@@ -68,6 +68,52 @@ After installation, a new widget type "Smile Custom Entity Widget" will be avail
 
 The widget can be placed on any CMS page, block, or within layout XML, providing flexible integration options.
 
+### Customizing Widget Options Through Theme Templates
+
+To customize or extend the SmileCustomEntityWidget's options, you can override the widget configuration within your theme by creating a widget.xml file in your theme's configuration directory.
+
+#### Instructions:
+
+1. Create the following directory structure in your theme folder if it doesn't already exist:
+   ```
+   app/design/frontend/YourVendor/YourTheme/Artbambou_SmileCustomEntityWidget/etc/
+   ```
+
+2. Create a `widget.xml` file within this directory with the following structure:
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+       <widget id="artbambou_smile_custom_entity_set_widget">
+           <parameters>
+               <!-- Add or modify parameters here -->
+               <parameter name="template" xsi:type="select" required="true" visible="true">
+                   <label translate="true">Template</label>
+                   <options>
+                       <option name="grid" value="Artbambou_SmileCustomEntityWidget::widget/grid.phtml">
+                           <label translate="true">Grid Template</label>
+                       </option>
+                       <option name="custom_list" value="YourVendor_YourTheme::smile_entity/custom_list.phtml">
+                           <label translate="true">Custom List Template</label>
+                       </option>
+                       <!-- Add more template options as needed -->
+                   </options>
+               </parameter>
+           </parameters>
+       </widget>
+   </widgets>
+   ```
+
+3. After adding this file, clear the Magento cache:
+   ```bash
+   bin/magento cache:clean
+   ```
+
+This approach allows you to extend the widget configuration without modifying the core module code. You can add new template options, modify existing parameters, or introduce entirely new parameters to customize the widget's behavior to meet your specific design requirements.
+
+Note that any custom templates referenced in your widget.xml must exist within your theme structure for them to work properly.
+
 ## Requirements
 
 - Smile CustomEntity module
