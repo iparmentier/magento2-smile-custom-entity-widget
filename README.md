@@ -18,6 +18,7 @@ The Artbambou SmileCustomEntityWidget module extends Magento 2 by adding widget 
 
 - **Custom Entity Widget**: Create widgets that display custom entities from specified attribute sets
 - **Advanced Filtering**: Filter entities using sophisticated condition combinations
+  - **Custom Attribute to Filter** : "Entity Has Image", "Entity ID" (without chooser grid for now)
 - **Customizable Sorting**: Sort entities by any attribute with configurable direction
 - **Pagination Controls**: Optional paging functionality with customizable items per page
 
