@@ -85,7 +85,8 @@ To customize or extend the SmileCustomEntityWidget's options, you can override t
    <?xml version="1.0" encoding="UTF-8"?>
    <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-       <widget id="artbambou_smile_custom_entity_set_widget">
+       <widget id="artbambou_smile_custom_entity_set_widget"
+               class="Artbambou\SmileCustomEntityWidget\Block\Set\Widget\CustomEntityWidget">
            <parameters>
                <!-- Add or modify parameters here -->
                <parameter name="template" xsi:type="select" required="true" visible="true">
