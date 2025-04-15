@@ -6,6 +6,8 @@
 
 [SPONSOR: Amadeco](https://www.amadeco.fr)
 
+⚠️ **Known Issue:** Currently, this module does not sort or filter attributes based on the selected attribute set. All custom entity attributes are displayed in the conditions section regardless of whether they belong to the chosen attribute set. This limitation may impact the user experience when working with multiple attribute sets that have different attribute structures.
+
 ## Overview
 
 The Artbambou SmileCustomEntityWidget module extends Magento 2 by adding widget capabilities to Smile Custom Entities, empowering merchants to display filtered custom entity collections with advanced presentation options. This module bridges the gap between content management and presentation, allowing for dynamic display of custom entities on any content page.
