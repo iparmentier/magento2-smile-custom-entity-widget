@@ -10,6 +10,8 @@
 
 The Artbambou SmileCustomEntityWidget module extends Magento 2 by adding widget capabilities to Smile Custom Entities, empowering merchants to display filtered custom entity collections with advanced presentation options. This module bridges the gap between content management and presentation, allowing for dynamic display of custom entities on any content page.
 
+<img width="1093" alt="Image" src="https://github.com/user-attachments/assets/da94ec88-780c-49b4-bc7a-1c7e24fb8f1e" />
+
 ## Features
 
 - **Custom Entity Widget**: Create widgets that display custom entities from specified attribute sets
