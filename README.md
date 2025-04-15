@@ -2,7 +2,7 @@
 
 [![Magento 2](https://img.shields.io/badge/Magento-2.4.x-brightgreen.svg)](https://magento.com)
 [![PHP](https://img.shields.io/badge/PHP-8.1|8.2|8.3-blue.svg)](https://www.php.net)
-[![License](https://img.shields.io/github/license/iparmentier/module-smile-custom-entity-widget)](https://github.com/iparmentier/module-smile-custom-entity-widget/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/iparmentier/magento2-smile-custom-entity-widget)](https://github.com/iparmentier/magento2-smile-custom-entity-widget/blob/main/LICENSE.txt)
 [SPONSOR: Amadeco](https://www.amadeco.fr)
 
 ## Overview
@@ -59,8 +59,8 @@ After installation, a new widget type "Smile Custom Entity Widget" will be avail
    - **Number of Items**: Configure how many items to display
    - **Sorting Options**: Choose which attribute to sort by and the direction
    - **Image Dimensions**: Set the width and height for entity images
-   - **Footer Button**: Optionally display a call-to-action button
-   - **Template**: Select the display template
+   - (Not implemented in template) **Footer Button**: Optionally display a call-to-action button
+   - (Not implemented in template) **Template**: Select the display template
 
 The widget can be placed on any CMS page, block, or within layout XML, providing flexible integration options.
 
