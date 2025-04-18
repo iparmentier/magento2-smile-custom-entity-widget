@@ -117,8 +117,8 @@ Note that any custom templates referenced in your widget.xml must exist within y
 
 ## Requirements
 
-- Smile CustomEntity module
-- Smile ScopedEav module
+- Smile CustomEntity module (https://github.com/Smile-SA/magento2-module-custom-entity)
+- Smile ScopedEav module (https://github.com/Smile-SA/magento2-module-scoped-eav)
 
 ## Compatibility
 
