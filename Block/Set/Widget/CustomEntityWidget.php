@@ -585,7 +585,7 @@ class CustomEntityWidget extends Template implements BlockInterface
     public function decodeConditions(string $encodedConditions): array
     {
         try {
-            $conditions = $this->serializer->unserialize(htmlspecialchars_decode($encodedConditions));
+            $conditions = $this->conditionsHelper->decode(htmlspecialchars_decode($encodedConditions));
             return is_array($conditions) ? $conditions : [];
         } catch (\InvalidArgumentException $exception) {
             /** @var array{exception:\Throwable, encoded_conditions:string, uri:string} $context */
