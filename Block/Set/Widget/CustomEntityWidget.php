@@ -125,7 +125,7 @@ class CustomEntityWidget extends Template implements BlockInterface
      *
      * @var Json
      */
-    private $json;
+    private $serializer;
 
     /**
      * View constructor.
@@ -152,7 +152,7 @@ class CustomEntityWidget extends Template implements BlockInterface
         Conditions $conditionsHelper,
         ImageFactory $imageFactory,
         array $data = [],
-        Json $json = null
+        Json $serializer = null
     ) {
         $this->attributeSetRepository = $attributeSetRepository;
         $this->customEntityRepository = $customEntityRepository;
@@ -162,7 +162,7 @@ class CustomEntityWidget extends Template implements BlockInterface
         $this->rule = $rule;
         $this->conditionsHelper = $conditionsHelper;
         $this->imageFactory = $imageFactory;
-        $this->json = $json ?: ObjectManager::getInstance()->get(Json::class);
+        $this->serializer = $serializer ?: ObjectManager::getInstance()->get(Json::class);
 
         parent::__construct($context, $data);
     }
@@ -208,7 +208,7 @@ class CustomEntityWidget extends Template implements BlockInterface
            $this->getItemsPerPage(),
            $this->getItemsCount(),
            $conditions,
-           $this->json->serialize($this->getRequest()->getParams()),
+           $this->serializer->serialize($this->getRequest()->getParams()),
            $this->getTemplate()
         ];
     }
@@ -546,9 +546,8 @@ class CustomEntityWidget extends Template implements BlockInterface
     public function getIdentities()
     {
         $identities = [];
-
-        if ($entities = $this->getEntities()) {
-            foreach ($entities as $entity) {
+        if ($this->getEntities()) {
+            foreach ($this->getEntities() as $entity) {
                 $identities[] = $entity->getIdentities();
             }
         }
@@ -569,7 +568,6 @@ class CustomEntityWidget extends Template implements BlockInterface
     {
         $pageName = $this->getData('page_var_name');
         $pagerBlockName = 'widget.smile.set.list.pager';
-
         if (!$pageName) {
             return $pagerBlockName;
         }
@@ -577,17 +575,27 @@ class CustomEntityWidget extends Template implements BlockInterface
         return $pagerBlockName . '.' . $pageName;
     }
 
-
-
     /**
-     * Decode encoded special characters and unserialize conditions into array
+     * Decode widget conditions.
      *
-     * @param string $encodedConditions
-     * @return array
+     * @param string $encodedConditions Conditions encoded as JSON.
+     * @return array<mixed> Decoded conditions array.
      * @see \Magento\Widget\Model\Widget::getDirectiveParam
      */
-    private function decodeConditions(string $encodedConditions): array
+    public function decodeConditions(string $encodedConditions): array
     {
-        return $this->conditionsHelper->decode(htmlspecialchars_decode($encodedConditions));
+        try {
+            $conditions = $this->serializer->unserialize(htmlspecialchars_decode($encodedConditions));
+            return is_array($conditions) ? $conditions : [];
+        } catch (\InvalidArgumentException $exception) {
+            /** @var array{exception:\Throwable, encoded_conditions:string, uri:string} $context */
+            $context = [
+                'exception' => $exception,
+                'encoded_conditions' => $encodedConditions,
+                'uri' => $this->_request->getRequestUri(),
+            ];
+            $this->_logger->error($exception->getMessage(), $context);
+            return [];
+        }
     }
 }
